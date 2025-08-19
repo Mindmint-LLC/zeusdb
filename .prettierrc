@@ -1,0 +1,19 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "semi": true,
+  "printWidth": 120,
+  "arrowParens": "always",
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-sh"
+  ],
+  "importOrder": [
+    "^[a-z]",
+    "^@/",
+    "^[.]"
+  ],
+  "importOrderSeparation": false,
+  "importOrderSortSpecifiers": true
+}

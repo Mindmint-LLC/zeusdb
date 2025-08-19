@@ -1,0 +1,36 @@
+{
+  "name": "zeusdb",
+  "version": "0.0.13",
+  "description": "Custom database wrapper",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "doc": "npx typedoc"
+  },
+  "bin": {
+    "zeusdb": "./bin/zeusdb.js"
+  },
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "mysql2": "^3.14.0",
+    "tsx": "^4.19.3"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@types/jest": "^29.5.14",
+    "@types/mysql": "^2.15.26",
+    "@typescript-eslint/parser": "^8.27.0",
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-sh": "^0.15.0",
+    "ts-jest": "^29.2.6",
+    "ts-node": "^10.9.2",
+    "typedoc": "^0.28.1",
+    "typescript": "^5.8.2"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "eslint --fix"
+  }
+}

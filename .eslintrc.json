@@ -1,0 +1,9 @@
+{
+  "extends": ["prettier"],
+  "rules": {
+    "no-console": [
+      "error", { "allow": ["warn", "error"] }
+    ],
+    "curly": ["warn"]
+  }
+}

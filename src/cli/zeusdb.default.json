@@ -1,0 +1,27 @@
+{
+  "generate":{
+    "default": "db1",
+    "db1": {
+      "datasource": "db1",
+      "method": "interface_single_file",
+      "output": "src/types/dbTypes.ts",
+      "interfacePrefix": "db1",
+      "enumPrefix": "db1Enum",
+      "showFieldComments": true
+    }
+  },
+  "datasources": {
+    "db1": {
+      "id": "db1",
+      "usePool": true,
+      "poolTimeout": 60000,
+      "showConsoleLogs": false,
+      "batchExecuteAlwaysSplit": true,
+      "throwErrors": true,
+      "mysql": {
+        "envKey": "JAWSDB_URL",
+        "connectionLimit": 10
+      }
+    }
+  }
+}

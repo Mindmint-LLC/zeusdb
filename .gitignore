@@ -1,0 +1,16 @@
+# dependencies
+/node_modules/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# misc
+.DS_Store
+.env*
+.idea
+npm-debug.log*
+
+.flaskenv*
+!.env.project
+!.env.vault

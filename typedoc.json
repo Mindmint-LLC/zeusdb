@@ -1,0 +1,9 @@
+{
+  "name": "Zeus DB",
+  "entryPoints": ["src/**/*.ts"],
+  "out": "docs",
+  "excludePrivate": true,
+  "excludeExternals": true,
+  "includeVersion": true,
+  "tsconfig": "./tsconfig.json"
+}
