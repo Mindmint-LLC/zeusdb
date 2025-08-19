@@ -1,15 +1,28 @@
 {
   "name": "zeusdb",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Custom database wrapper",
-  "main": "src/index.ts",
-  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
   "scripts": {
+    "build": "tsc",
     "test": "jest",
-    "doc": "npx typedoc"
+    "doc": "npx typedoc",
+    "prepublishOnly": "npm run build"
   },
   "bin": {
-    "zeusdb": "bin/zeusdb.js"
+    "zeusdb": "dist/cli/index.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
