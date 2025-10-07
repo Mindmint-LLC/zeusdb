@@ -184,6 +184,9 @@ export class ZeusDataSource {
         results = await conn.queryScalar(sql, params);
       } catch (err) {
         await conn.close();
+        if (this._throwErrors) {
+          throw err;
+        }
         return err;
       }
       await conn.close();
@@ -219,6 +222,9 @@ export class ZeusDataSource {
       results = await conn.query(sql, params);
     } catch (err) {
       results = err as Error;
+      if (this._throwErrors) {
+        throw err;
+      }
     }
     await conn.close();
     return results;
@@ -268,6 +274,9 @@ export class ZeusDataSource {
       results = await conn.queryRow(sql, params);
     } catch (err) {
       results = err as Error;
+      if (this._throwErrors) {
+        throw err;
+      }
     }
     await conn.close();
     return results;
@@ -304,6 +313,9 @@ export class ZeusDataSource {
       results = await conn.execute(sql, params);
     } catch (err) {
       results = err as Error;
+      if (this._throwErrors) {
+        throw err;
+      }
     }
     await conn.close();    return results;
   }
@@ -327,6 +339,9 @@ export class ZeusDataSource {
       results = await conn.batchExecute(sql);
     } catch (err) {
       results = err as Error;
+      if (this._throwErrors) {
+        throw err;
+      }
     }
     await conn.close();
     return results;
