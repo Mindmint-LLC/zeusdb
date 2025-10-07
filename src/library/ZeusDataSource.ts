@@ -179,7 +179,13 @@ export class ZeusDataSource {
   public async queryScalar(arg1: any, ...rest: any[]): Promise<any|Error> {
       let [sql, params] = this._handleTemplateQuery(arg1, ...rest);
       const conn = await this.connect();
-      const results = await conn.queryScalar(sql, params);
+      let results:any;
+      try {
+        results = await conn.queryScalar(sql, params);
+      } catch (err) {
+        await conn.close();
+        return err;
+      }
       await conn.close();
       return results;
   }
@@ -208,7 +214,12 @@ export class ZeusDataSource {
   public async query(arg1: any, ...rest: any[]): Promise<ResultRow[]|Error> {
     let [sql, params] = this._handleTemplateQuery(arg1, ...rest);
     const conn = await this.connect();
-    const results = await conn.query(sql, params);
+    let results:ResultRow[] | Error;
+    try {
+      results = await conn.query(sql, params);
+    } catch (err) {
+      results = err as Error;
+    }
     await conn.close();
     return results;
   }
@@ -252,7 +263,12 @@ export class ZeusDataSource {
   public async queryRow(arg1: any, ...rest: any[]): Promise<ResultRow|null|Error> {
     let [sql, params] = this._handleTemplateQuery(arg1, ...rest);
     const conn = await this.connect();
-    const results = await conn.queryRow(sql, params);
+    let results:Error|ResultRow|null;
+    try {
+      results = await conn.queryRow(sql, params);
+    } catch (err) {
+      results = err as Error;
+    }
     await conn.close();
     return results;
   }
@@ -283,9 +299,13 @@ export class ZeusDataSource {
   public async execute(arg1: any, ...rest: any[]): Promise<ExecuteResult|Error> {
     let [sql, params] = this._handleTemplateQuery(arg1, ...rest);
     const conn = await this.connect();
-    const results = await conn.execute(sql, params);
-    await conn.close();
-    return results;
+    let results:ExecuteResult | Error;
+    try {
+      results = await conn.execute(sql, params);
+    } catch (err) {
+      results = err as Error;
+    }
+    await conn.close();    return results;
   }
 
   /**
@@ -302,7 +322,12 @@ export class ZeusDataSource {
   public async batchExecute(arg1: any, ...rest: any[]): Promise<Array<ExecuteResult|Error>|Error> {
     let [sql, _params] = this._handleTemplateQuery(arg1, ...rest);
     const conn = await this.connect();
-    const results = await conn.batchExecute(sql);
+    let results:Error| (ExecuteResult | Error)[];
+    try {
+      results = await conn.batchExecute(sql);
+    } catch (err) {
+      results = err as Error;
+    }
     await conn.close();
     return results;
   }
