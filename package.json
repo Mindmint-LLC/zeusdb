@@ -1,6 +1,6 @@
 {
   "name": "zeusdb",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Custom database wrapper",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -185,6 +185,7 @@ export class ZeusDataSource {
       } catch (err) {
         await conn.close();
         if (this._throwErrors) {
+          await conn.close();
           throw err;
         }
         return err;
@@ -223,6 +224,7 @@ export class ZeusDataSource {
     } catch (err) {
       results = err as Error;
       if (this._throwErrors) {
+        await conn.close();
         throw err;
       }
     }
@@ -275,6 +277,7 @@ export class ZeusDataSource {
     } catch (err) {
       results = err as Error;
       if (this._throwErrors) {
+        await conn.close();
         throw err;
       }
     }
@@ -314,6 +317,7 @@ export class ZeusDataSource {
     } catch (err) {
       results = err as Error;
       if (this._throwErrors) {
+        await conn.close();
         throw err;
       }
     }
@@ -340,6 +344,7 @@ export class ZeusDataSource {
     } catch (err) {
       results = err as Error;
       if (this._throwErrors) {
+        await conn.close();
         throw err;
       }
     }
